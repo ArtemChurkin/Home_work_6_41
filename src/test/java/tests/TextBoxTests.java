@@ -1,7 +1,10 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
+
+import java.util.Locale;
 
 import static testdata.TestData.*;
 
@@ -9,7 +12,17 @@ public class TextBoxTests extends TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
 
     @Test
-    void succesfulFillFormTest_dsl() {
+    void succesfulFillFormTest_with_faker_dsl() {
+        Faker faker = new Faker();
+        Faker fakerRu = new Faker(new Locale("ru"));
+
+        String userName = fakerRu.name().fullName();
+        String userEmail = faker.internet().emailAddress();
+        String currentAddress = fakerRu.address().fullAddress();
+        String permanentAddress = fakerRu.address().fullAddress();
+
+
+
         textBoxPage.openPage()
                 .typeUserName(userName)
                 .typeUserEmail(userEmail)

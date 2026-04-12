@@ -12,6 +12,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("com.codeborne:selenide:7.14.0")
+    testImplementation('com.github.javafaker:javafaker:1.0.2')
+
 
 }
 
