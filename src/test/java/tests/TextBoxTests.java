@@ -7,19 +7,19 @@ import pages.TextBoxPage;
 import java.util.Locale;
 
 import static testdata.TestData.*;
+import static utils.RandomUtils.*;
 
 public class TextBoxTests extends TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
 
     @Test
-    void succesfulFillFormTest_with_faker_dsl() {
-        Faker faker = new Faker();
-        Faker fakerRu = new Faker(new Locale("ru"));
+    void succesfulFillFormTest_with_random_utils_dsl() {
 
-        String userName = fakerRu.name().fullName();
-        String userEmail = faker.internet().emailAddress();
-        String currentAddress = fakerRu.address().fullAddress();
-        String permanentAddress = fakerRu.address().fullAddress();
+
+        String userName = getRandomString(8);
+        String userEmail = getRandomEmail();
+        String currentAddress = getRandomString(15);
+        String permanentAddress = getRandomString(12);
 
 
 
@@ -38,6 +38,10 @@ public class TextBoxTests extends TestBase {
     @Test
     void onlyRequiredFieldSuccesfulTest2_dsl() {
 
+        String userName = getRandomString(8);
+        String userEmail = getRandomEmail();
+
+
         textBoxPage.openPage()
 
         .typeUserName(userName)
@@ -49,6 +53,11 @@ public class TextBoxTests extends TestBase {
 
     @Test
     void firstNegativeTest_dsl() {
+
+        String userName = getRandomString(8);
+        String userErrorEmail = getRandomErrorEmail();
+        String currentAddress = getRandomString(15);
+        String permanentAddress = getRandomString(12);
 
         textBoxPage.openPage()
 

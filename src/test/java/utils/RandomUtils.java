@@ -1,0 +1,90 @@
+package utils;
+
+import org.junit.jupiter.api.Test;
+
+import java.security.SecureRandom;
+import java.util.concurrent.ThreadLocalRandom;
+
+import static java.lang.String.format;
+import static org.apache.commons.lang3.RandomUtils.nextInt;
+
+public class RandomUtils {
+
+    public static void main(String[] args) {
+            System.out.println(getRandomString(8));
+            System.out.println(getRandomEmail());
+            System.out.println(getRandomInt(0, 99999));
+            System.out.println(getRandomInt(111111111, 888888888));
+            System.out.println(getRandomGender());
+
+
+    }
+
+
+
+    public static String getRandomString(int length){
+        String LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJLMNOPQRSTUVWXYZ";
+        StringBuilder result = new StringBuilder();
+        SecureRandom rnd = new SecureRandom();
+
+        for (int i = 0; i < length; i++){
+            result.append(
+                    LETTERS.charAt(                         // random letter from a to Z
+                            rnd.nextInt(                    // random from 0 to 8
+                                    LETTERS.length())));    //  8
+        }
+
+        return result.toString();
+    }
+    public static String getRandomEmail() {
+        //return getRandomString(10)+ "@" + getRandomString(8) + ".com";
+        //return String.format("%s@%s.com");
+        return format("%s@%s.com", getRandomString(10), getRandomString(8));
+    }
+
+    public static int getRandomInt(int min, int max){
+        return ThreadLocalRandom.current().nextInt(min, max +1);
+//        SecureRandom rnd = new SecureRandom();
+//        return rnd.nextInt( max - min + 1) + min;
+        }
+    public static String getRandomErrorEmail() {
+
+        return format("%s.%s.com", getRandomString(10), getRandomString(8));
+    }
+
+    public static String getRandomPhone(){
+    String phoneTemplate = "+%s (%s) %s - %s - %s";
+
+    return format(phoneTemplate, getRandomInt(7,7), getRandomInt(111,999), getRandomInt(111,999), getRandomInt(11,99), getRandomInt(11,99));
+    }
+
+//    public static String getRandomGender_bad_praactice(){
+//        String[] genders = {"Male", "Female", "Other"};
+//
+//        int randomIndex = getRandomInt(0, 2);
+//
+//        return genders[randomIndex];
+//    }
+
+    public static String getRandomGender(){
+        String[] genders = {"Male", "Female", "Other"};
+
+        return getRandomItemFromStringArray(genders);
+    }
+
+    public static String getRandomItemFromStringArray(String[] stringArray){
+        int arrayLength = stringArray.length;
+        int randomIndex = getRandomInt(0, arrayLength - 1);
+
+        return stringArray[randomIndex];
+    }
+
+}
+
+
+
+
+
+
+
+
