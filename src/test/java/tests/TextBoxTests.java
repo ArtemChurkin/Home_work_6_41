@@ -1,6 +1,7 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
@@ -12,59 +13,57 @@ import static utils.RandomUtils.*;
 public class TextBoxTests extends TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
 
+    String userNameU;
+    String userEmailU;
+    String userErrorEmailU;
+    String currentAddressU;
+    String permanentAddressU;
+
+    @BeforeEach
+    void prepareRandomData(){
+        userNameU = getRandomString(8);
+        userEmailU = getRandomEmail();
+        userErrorEmailU = getRandomErrorEmail();
+        currentAddressU = getRandomString(15);
+        permanentAddressU = getRandomString(12);
+    }
+
     @Test
     void succesfulFillFormTest_with_random_utils_dsl() {
 
-
-        String userName = getRandomString(8);
-        String userEmail = getRandomEmail();
-        String currentAddress = getRandomString(15);
-        String permanentAddress = getRandomString(12);
-
-
-
         textBoxPage.openPage()
-                .typeUserName(userName)
-                .typeUserEmail(userEmail)
-                .typeCurrentAddress(currentAddress)
-                .typePermanentAddress(permanentAddress)
+                .typeUserName(userNameU)
+                .typeUserEmail(userEmailU)
+                .typeCurrentAddress(currentAddressU)
+                .typePermanentAddress(permanentAddressU)
                 .submitFormButton()
-                .checkField("name", userName)
-                .checkField("email", userEmail)
-                .checkField("currentAddress", currentAddress)
-                .checkField("permanentAddress", permanentAddress);
+                .checkField("name", userNameU)
+                .checkField("email", userEmailU)
+                .checkField("currentAddress", currentAddressU)
+                .checkField("permanentAddress", permanentAddressU);
     }
 
     @Test
     void onlyRequiredFieldSuccesfulTest2_dsl() {
 
-        String userName = getRandomString(8);
-        String userEmail = getRandomEmail();
-
-
         textBoxPage.openPage()
 
-        .typeUserName(userName)
-        .typeUserEmail(userEmail)
+        .typeUserName(userNameU)
+        .typeUserEmail(userEmailU)
                 .submitFormButton()
-                .checkField("name", userName)
-                .checkField("email", userEmail);
+                .checkField("name", userNameU)
+                .checkField("email", userEmailU);
     }
 
     @Test
     void firstNegativeTest_dsl() {
 
-        String userName = getRandomString(8);
-        String userErrorEmail = getRandomErrorEmail();
-        String currentAddress = getRandomString(15);
-        String permanentAddress = getRandomString(12);
-
         textBoxPage.openPage()
 
-        .typeUserName(userName)
-        .typeUserEmail(userErrorEmail)
-        .typeCurrentAddress(currentAddress)
-        .typePermanentAddress(permanentAddress)
+        .typeUserName(userNameU)
+        .typeUserEmail(userErrorEmailU)
+        .typeCurrentAddress(currentAddressU)
+        .typePermanentAddress(permanentAddressU)
                 .submitFormButton()
                 .checkUserEmailHasErrorClass();
 
