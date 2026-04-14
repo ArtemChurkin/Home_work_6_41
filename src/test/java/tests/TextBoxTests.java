@@ -1,46 +1,27 @@
 package tests;
 
-import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
-
-import java.util.Locale;
+import testdata.TestData;
 
 import static testdata.TestData.*;
-import static utils.RandomUtils.*;
 
 public class TextBoxTests extends TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
-
-    String userNameU;
-    String userEmailU;
-    String userErrorEmailU;
-    String currentAddressU;
-    String permanentAddressU;
-
-    @BeforeEach
-    void prepareRandomData(){
-        userNameU = getRandomString(8);
-        userEmailU = getRandomEmail();
-        userErrorEmailU = getRandomErrorEmail();
-        currentAddressU = getRandomString(15);
-        permanentAddressU = getRandomString(12);
-    }
+    TestData testData = new TestData();
 
     @Test
-    void succesfulFillFormTest_with_random_utils_dsl() {
-
+    void succesfulFillFormTest_dsl() {
         textBoxPage.openPage()
-                .typeUserName(userNameU)
-                .typeUserEmail(userEmailU)
-                .typeCurrentAddress(currentAddressU)
-                .typePermanentAddress(permanentAddressU)
+                .typeUserName(testData.userName)
+                .typeUserEmail(testData.userEmail)
+                .typeCurrentAddress(currentAddress)
+                .typePermanentAddress(permanentAddress)
                 .submitFormButton()
-                .checkField("name", userNameU)
-                .checkField("email", userEmailU)
-                .checkField("currentAddress", currentAddressU)
-                .checkField("permanentAddress", permanentAddressU);
+                .checkField("name", testData.userName)
+                .checkField("email", testData.userEmail)
+                .checkField("currentAddress", currentAddress)
+                .checkField("permanentAddress", permanentAddress);
     }
 
     @Test
@@ -48,11 +29,11 @@ public class TextBoxTests extends TestBase {
 
         textBoxPage.openPage()
 
-        .typeUserName(userNameU)
-        .typeUserEmail(userEmailU)
+                .typeUserName(testData.userName)
+                .typeUserEmail(testData.userEmail)
                 .submitFormButton()
-                .checkField("name", userNameU)
-                .checkField("email", userEmailU);
+                .checkField("name", testData.userName)
+                .checkField("email", testData.userEmail);
     }
 
     @Test
@@ -60,10 +41,10 @@ public class TextBoxTests extends TestBase {
 
         textBoxPage.openPage()
 
-        .typeUserName(userNameU)
-        .typeUserEmail(userErrorEmailU)
-        .typeCurrentAddress(currentAddressU)
-        .typePermanentAddress(permanentAddressU)
+                .typeUserName(testData.userName)
+                .typeUserEmail(userErrorEmail)
+                .typeCurrentAddress(currentAddress)
+                .typePermanentAddress(permanentAddress)
                 .submitFormButton()
                 .checkUserEmailHasErrorClass();
 
