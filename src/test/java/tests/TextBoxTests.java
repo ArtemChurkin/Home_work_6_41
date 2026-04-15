@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 import testdata.TestData;
 
-import static testdata.TestData.*;
+import testdata.TestData.*;
 
 public class TextBoxTests extends TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
@@ -15,13 +15,13 @@ public class TextBoxTests extends TestBase {
         textBoxPage.openPage()
                 .typeUserName(testData.userName)
                 .typeUserEmail(testData.userEmail)
-                .typeCurrentAddress(currentAddress)
-                .typePermanentAddress(permanentAddress)
+                .typeCurrentAddress(testData.currentAddress)
+                .typePermanentAddress(testData.permanentAddress)
                 .submitFormButton()
                 .checkField("name", testData.userName)
                 .checkField("email", testData.userEmail)
-                .checkField("currentAddress", currentAddress)
-                .checkField("permanentAddress", permanentAddress);
+                .checkField("currentAddress", testData.currentAddress)
+                .checkField("permanentAddress", testData.permanentAddress);
     }
 
     @Test
@@ -42,9 +42,9 @@ public class TextBoxTests extends TestBase {
         textBoxPage.openPage()
 
                 .typeUserName(testData.userName)
-                .typeUserEmail(userErrorEmail)
-                .typeCurrentAddress(currentAddress)
-                .typePermanentAddress(permanentAddress)
+                .typeUserEmail(testData.userErrorEmail)
+                .typeCurrentAddress(testData.currentAddress)
+                .typePermanentAddress(testData.permanentAddress)
                 .submitFormButton()
                 .checkUserEmailHasErrorClass();
 

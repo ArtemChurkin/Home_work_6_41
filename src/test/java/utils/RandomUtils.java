@@ -3,12 +3,15 @@ package utils;
 import org.junit.jupiter.api.Test;
 
 import java.security.SecureRandom;
+import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.String.format;
-import static org.apache.commons.lang3.RandomUtils.nextInt;
+import static testdata.TestData.state;
 
 public class RandomUtils {
+
+    public static Date Date;
 
     public static String getRandomString(int length) {
         String LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJLMNOPQRSTUVWXYZ";
@@ -30,8 +33,6 @@ public class RandomUtils {
 
     public static int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
-//        SecureRandom rnd = new SecureRandom();
-//        return rnd.nextInt( max - min + 1) + min;
     }
 
     public static String getRandomErrorEmail() {
@@ -40,15 +41,63 @@ public class RandomUtils {
     }
 
     public static String getRandomPhone() {
-        String phoneTemplate = "+%s (%s) %s - %s - %s";
+        String phoneTemplate = "%s%s%s%s";
 
-        return format(phoneTemplate, getRandomInt(7, 7), getRandomInt(111, 999), getRandomInt(111, 999), getRandomInt(11, 99), getRandomInt(11, 99));
+        return format(phoneTemplate, getRandomInt(111, 999), getRandomInt(111, 999), getRandomInt(11, 99), getRandomInt(11, 99));
     }
 
     public static String getRandomGender() {
         String[] genders = {"Male", "Female", "Other"};
 
         return getRandomItemFromStringArray(genders);
+    }
+
+    public static String getRandomMonth() {
+        String[] months = {"January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"};
+
+        return getRandomItemFromStringArray(months);
+    }
+
+    public static String getRandomSubject() {
+        String[] subjects = {"Maths", "Physics", "Civics", "Chemistry", "English",
+                "Economics", "History", "Biology"};
+        return getRandomItemFromStringArray(subjects);
+    }
+
+    public static String getRandomHobbie() {
+        String[] hobbies = {"Sports", "Reading", "Music"};
+        return getRandomItemFromStringArray(hobbies);
+    }
+
+    public static String getRandomPicture() {
+        String[] pictures = {"123.png", "random1.jpg", "random2.png"};
+        return getRandomItemFromStringArray(pictures);
+    }
+
+    public static String getRandomState() {
+        String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
+        return getRandomItemFromStringArray(states);
+    }
+
+    public static String getRandomCity() {
+        if (state.contains("NCR")) {
+            String[] cityes = {"Delhi", "Gurgaon", "Noida"};
+            return getRandomItemFromStringArray(cityes);
+        }
+        if (state.contains("Uttar Pradesh")) {
+            String[] cityes = {"Agra", "Lucknow", "Merrut"};
+            return getRandomItemFromStringArray(cityes);
+        }
+        if (state.contains("Haryana")) {
+            String[] cityes = {"Karnal", "Panipat"};
+            return getRandomItemFromStringArray(cityes);
+        }
+        if (state.contains("Rajasthan")) {
+            String[] cityes = {"Jaipur", "Jaiselmer"};
+            return getRandomItemFromStringArray(cityes);
+        }
+        return state;
     }
 
     public static String getRandomItemFromStringArray(String[] stringArray) {

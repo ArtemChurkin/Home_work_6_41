@@ -1,30 +1,33 @@
 package testdata;
 
 import com.github.javafaker.Faker;
+import utils.RandomUtils.*;
+
+import static utils.RandomUtils.*;
 
 public class TestData {
     Faker faker = new Faker();
 
     public String userName = faker.name().username();
     public String userEmail = faker.internet().emailAddress();
-    public static String userErrorEmail = "Artyom76gmail.com";
-    public static String currentAddress = "Yaroslavl'";
-    public static String permanentAddress = "Danilov";
+    public String userErrorEmail = getRandomErrorEmail();
+    public String currentAddress = faker.address().cityName();
+    public String permanentAddress = faker.address().cityName();
 
-    public static String userFirstName = "Artyom";
-    public static String userLastName = "Churkin";
-    public static String userGender = "Male";
-    public static String userPhoneNumber = "8920111111";
-    public static String userErrorPhoneNumber = "ыуа234ап";
-    public static String userBirthdayMonth = "December";
-    public static String userBirthdayYear = "1989";
-    public static String userBirthDay = "03";
-    public static String subject = "Physics";
-    public static String hobbie = "Music";
+    public  String userFirstName = faker.name().firstName();
+    public  String userLastName = faker.name().lastName();
+    public static String userGender = getRandomGender();
+    public  String userPhoneNumber = getRandomPhone();
+    public static String userErrorPhoneNumber = getRandomString(6);
+    public static String userBirthdayMonth = getRandomMonth();
+    public static String userBirthdayYear = (String.valueOf(getRandomInt(1950, 2026)));
+    public  String userBirthDay = (String.valueOf(getRandomInt(1,28)));
+    public static String subject = getRandomSubject();
+    public static String hobbie = getRandomHobbie();
     public static String picturePath = "img/123.png";
-    public static String pictureName = "123.png";
-    public static String state = "NCR";
-    public static String city = "Delhi";
+    public static String pictureName = getRandomPicture();
+    public static String state = getRandomState();
+    public static String city = getRandomCity();
 
     public static String titleText = "Thanks for submitting the form";
     public static String borderColor = "border-color";

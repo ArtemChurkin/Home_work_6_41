@@ -2,34 +2,36 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.AutomationPracticeFormPage;
-
-import static testdata.TestData.*;
+import testdata.TestData;
+import testdata.TestData.*;
+//import static testdata.TestData.*;
 
 
 public class AutomationPracticeFormTests extends TestBase {
     AutomationPracticeFormPage automationPracticeFormPage = new AutomationPracticeFormPage();
+    TestData testData = new TestData();
 
 
     @Test
     void succesfulFillTest() {
 
         automationPracticeFormPage.openPage()
-                .typeFirstName(userFirstName)
-                .typeLastName(userLastName)
-                .typeUserEmail(userEmail)
-                .typeUserGender(userGender)
-                .typeUserNumber(userPhoneNumber)
-                .setBirthDay(userBirthDay, userBirthdayMonth, userBirthdayYear)
+                .typeFirstName(testData.userFirstName)
+                .typeLastName(testData.userLastName)
+                .typeUserEmail(testData.userEmail)
+                .typeUserGender(testData.userGender)
+                .typeUserNumber(testData.userPhoneNumber)
+                .setBirthDay(testData.userBirthDay, testData.userBirthdayMonth, testData.userBirthdayYear)
 
-                .typeSubject(subject)
-                .typeHobbie(hobbie)
-                .typePicture(picturePath)
-                .typeCurrentAddress(currentAddress)
+                .typeSubject(testData.subject)
+                .typeHobbie(testData.hobbie)
+                .typePicture(testData.picturePath)
+                .typeCurrentAddress(testData.currentAddress)
 
                 .stateSelectList()
-                .typeState(state)
+                .typeState(testData.state)
                 .citySelectList()
-                .typeCity(city)
+                .typeCity(testData.city)
                 .submitFormButton()
 
                 .resultTable()
@@ -42,11 +44,11 @@ public class AutomationPracticeFormTests extends TestBase {
 
         automationPracticeFormPage.openPage()
 
-                .typeFirstName(userFirstName)
-                .typeLastName(userLastName)
-                .typeUserEmail(userEmail)
-                .typeUserGender(userGender)
-                .typeUserNumber(userPhoneNumber)
+                .typeFirstName(testData.userFirstName)
+                .typeLastName(testData.userLastName)
+                .typeUserEmail(testData.userEmail)
+                .typeUserGender(testData.userGender)
+                .typeUserNumber(testData.userPhoneNumber)
                 .submitFormButton()
                 .closeFormButton();
 
@@ -66,22 +68,22 @@ public class AutomationPracticeFormTests extends TestBase {
     void secondNegativeTest() {
 
         automationPracticeFormPage.openPage()
-                .typeFirstName(userFirstName)
-                .typeLastName(userLastName)
-                .typeUserEmail(userErrorEmail)
-                .typeUserGender(userGender)
-                .typeUserNumber(userPhoneNumber)
+                .typeFirstName(testData.userFirstName)
+                .typeLastName(testData.userLastName)
+                .typeUserEmail(testData.userErrorEmail)
+                .typeUserGender(testData.userGender)
+                .typeUserNumber(testData.userPhoneNumber)
 
-                .setBirthDay(userBirthDay, userBirthdayMonth, userBirthdayYear)
+                .setBirthDay(testData.userBirthDay, testData.userBirthdayMonth, testData.userBirthdayYear)
 
-                .typeSubject(subject)
-                .typeHobbie(hobbie)
-                .typePicture(picturePath)
-                .typeCurrentAddress(currentAddress)
+                .typeSubject(testData.subject)
+                .typeHobbie(testData.hobbie)
+                .typePicture(testData.picturePath)
+                .typeCurrentAddress(testData.currentAddress)
                 .stateSelectList()
-                .typeState(state)
+                .typeState(testData.state)
                 .citySelectList()
-                .typeCity(city)
+                .typeCity(testData.city)
                 .submitFormButton()
 
                 .checkEmailErrorBorder()
@@ -93,23 +95,23 @@ public class AutomationPracticeFormTests extends TestBase {
     @Test
     void thirdNegativeTest() {
         automationPracticeFormPage.openPage()
-                .typeFirstName(userFirstName)
-                .typeLastName(userLastName)
-                .typeUserEmail(userEmail)
-                .typeUserGender(userGender)
-                .typeUserNumber(userErrorPhoneNumber)
+                .typeFirstName(testData.userFirstName)
+                .typeLastName(testData.userLastName)
+                .typeUserEmail(testData.userEmail)
+                .typeUserGender(testData.userGender)
+                .typeUserNumber(testData.userErrorPhoneNumber)
 
-                .setBirthDay(userBirthDay, userBirthdayMonth, userBirthdayYear)
+                .setBirthDay(testData.userBirthDay, testData.userBirthdayMonth, testData.userBirthdayYear)
 
-                .typeSubject(subject)
-                .typeHobbie(hobbie)
-                .typePicture(picturePath)
-                .typeCurrentAddress(currentAddress)
+                .typeSubject(testData.subject)
+                .typeHobbie(testData.hobbie)
+                .typePicture(testData.picturePath)
+                .typeCurrentAddress(testData.currentAddress)
 
                 .stateSelectList()
-                .typeState(state)
+                .typeState(testData.state)
                 .citySelectList()
-                .typeCity(city)
+                .typeCity(testData.city)
                 .submitFormButton()
 
                 .checkNumberErrorBorder()
