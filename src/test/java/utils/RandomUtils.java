@@ -1,17 +1,15 @@
 package utils;
 
 import org.junit.jupiter.api.Test;
+import testdata.TestData;
 
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.String.format;
-import static testdata.TestData.state;
 
 public class RandomUtils {
-
-    public static Date Date;
 
     public static String getRandomString(int length) {
         String LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJLMNOPQRSTUVWXYZ";
@@ -26,8 +24,7 @@ public class RandomUtils {
     }
 
     public static String getRandomEmail() {
-        //return getRandomString(10)+ "@" + getRandomString(8) + ".com";
-        //return String.format("%s@%s.com");
+
         return format("%s@%s.com", getRandomString(10), getRandomString(8));
     }
 
@@ -71,7 +68,7 @@ public class RandomUtils {
     }
 
     public static String getRandomPicture() {
-        String[] pictures = {"123.png", "random1.jpg", "random2.png"};
+        String[] pictures = {"img/123.png", "img/random1.jpg", "img/random2.png"};
         return getRandomItemFromStringArray(pictures);
     }
 
@@ -80,7 +77,7 @@ public class RandomUtils {
         return getRandomItemFromStringArray(states);
     }
 
-    public static String getRandomCity() {
+    public static String getRandomCity(String state) {
         if (state.contains("NCR")) {
             String[] cityes = {"Delhi", "Gurgaon", "Noida"};
             return getRandomItemFromStringArray(cityes);

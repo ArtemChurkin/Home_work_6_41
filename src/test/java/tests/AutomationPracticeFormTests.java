@@ -25,7 +25,7 @@ public class AutomationPracticeFormTests extends TestBase {
 
                 .typeSubject(testData.subject)
                 .typeHobbie(testData.hobbie)
-                .typePicture(testData.picturePath)
+                .typePicture(testData.pictureName)
                 .typeCurrentAddress(testData.currentAddress)
 
                 .stateSelectList()
@@ -78,7 +78,7 @@ public class AutomationPracticeFormTests extends TestBase {
 
                 .typeSubject(testData.subject)
                 .typeHobbie(testData.hobbie)
-                .typePicture(testData.picturePath)
+                .typePicture(testData.pictureName)
                 .typeCurrentAddress(testData.currentAddress)
                 .stateSelectList()
                 .typeState(testData.state)
@@ -105,7 +105,7 @@ public class AutomationPracticeFormTests extends TestBase {
 
                 .typeSubject(testData.subject)
                 .typeHobbie(testData.hobbie)
-                .typePicture(testData.picturePath)
+                .typePicture(testData.pictureName)
                 .typeCurrentAddress(testData.currentAddress)
 
                 .stateSelectList()
