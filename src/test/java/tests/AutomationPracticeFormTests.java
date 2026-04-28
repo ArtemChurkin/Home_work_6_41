@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import pages.AutomationPracticeFormPage;
 import testdata.TestData;
 import testdata.TestData.*;
-//import static testdata.TestData.*;
 
 
 public class AutomationPracticeFormTests extends TestBase {
@@ -25,7 +24,7 @@ public class AutomationPracticeFormTests extends TestBase {
 
                 .typeSubject(testData.subject)
                 .typeHobbie(testData.hobbie)
-                .typePicture(testData.pictureName)
+                .typePicture("img/"+testData.pictureName)
                 .typeCurrentAddress(testData.currentAddress)
 
                 .stateSelectList()
@@ -34,9 +33,20 @@ public class AutomationPracticeFormTests extends TestBase {
                 .typeCity(testData.city)
                 .submitFormButton()
 
-                .resultTable()
+                .checkResultTableVisible()
+                .checkResultTableTitle(testData.tableTitle)
+                .checkResultTableValue(testData.userFirstName+" "+testData.userLastName)
+                .checkResultTableValue(testData.userEmail)
+                .checkResultTableValue(testData.userGender)
+                .checkResultTableValue(testData.userPhoneNumber)
+                .checkResultTableValue(testData.userBirthDayDate)
+                .checkResultTableValue(testData.subject)
+                .checkResultTableValue(testData.hobbie)
+                .checkResultTableValue(testData.pictureName)
+                .checkResultTableValue(testData.currentAddress)
+                .checkResultTableValue(testData.state+" "+ testData.city)
 
-                .closeFormButton();
+                .closeResultTable();
     }
 
     @Test
@@ -50,7 +60,7 @@ public class AutomationPracticeFormTests extends TestBase {
                 .typeUserGender(testData.userGender)
                 .typeUserNumber(testData.userPhoneNumber)
                 .submitFormButton()
-                .closeFormButton();
+                .closeResultTable();
 
     }
 
@@ -78,7 +88,7 @@ public class AutomationPracticeFormTests extends TestBase {
 
                 .typeSubject(testData.subject)
                 .typeHobbie(testData.hobbie)
-                .typePicture(testData.pictureName)
+                .typePicture("img/"+testData.pictureName)
                 .typeCurrentAddress(testData.currentAddress)
                 .stateSelectList()
                 .typeState(testData.state)
@@ -105,7 +115,7 @@ public class AutomationPracticeFormTests extends TestBase {
 
                 .typeSubject(testData.subject)
                 .typeHobbie(testData.hobbie)
-                .typePicture(testData.pictureName)
+                .typePicture("img/"+testData.pictureName)
                 .typeCurrentAddress(testData.currentAddress)
 
                 .stateSelectList()

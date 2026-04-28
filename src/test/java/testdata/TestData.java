@@ -22,6 +22,7 @@ public class TestData {
     public  String userBirthdayMonth = getRandomMonth();
     public  String userBirthdayYear = (String.valueOf(getRandomInt(1950, 2026)));
     public  String userBirthDay = (String.valueOf(getRandomInt(1,28)));
+    public  String userBirthDayDate = userBirthDay+" "+ userBirthdayMonth+","+userBirthdayYear;
     public  String subject = getRandomSubject();
     public  String hobbie = getRandomHobbie();
 
@@ -29,7 +30,7 @@ public class TestData {
     public  String state = getRandomState();
     public  String city = getRandomCity(state);
 
-
+    public static String tableTitle = "Thanks for submitting the form";
     public static String borderColor = "border-color";
     public static String red = "rgb(220, 53, 69)";
     public static String backroundImage = "background-image";

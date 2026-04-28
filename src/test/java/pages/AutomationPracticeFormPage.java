@@ -1,8 +1,8 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import components.CalendarComponent;
-import components.ResultTableComponent;
+import pages.components.CalendarComponent;
+import pages.components.ResultTableComponent;
 import utils.JsSnippets;
 
 import static com.codeborne.selenide.Condition.cssValue;
@@ -32,8 +32,6 @@ public class AutomationPracticeFormPage {
     private SelenideElement citySelectList = $("#city");
     private SelenideElement cityChoose = $("#react-select-4-input");
     private SelenideElement submitButton = $("#submit");
-
-    private SelenideElement closeButton = $("#closeLargeModal");
 
     // Actions
     public AutomationPracticeFormPage openPage() {
@@ -124,9 +122,24 @@ public class AutomationPracticeFormPage {
         return this;
     }
 
-    public AutomationPracticeFormPage closeFormButton() {
-        closeButton.click();
+    public AutomationPracticeFormPage checkResultTableTitle(String title) {
+        resultTableComponent.setCheckTitle(title);
+        return this;
+    }
 
+    public AutomationPracticeFormPage checkResultTableVisible() {
+        resultTableComponent.setCheckModalDialog();
+        return this;
+    }
+
+    public AutomationPracticeFormPage checkResultTableValue(String value) {
+        resultTableComponent.setCheckTable(value);
+        return this;
+    }
+
+
+    public AutomationPracticeFormPage closeResultTable() {
+        resultTableComponent.closeFormButton();
         return this;
     }
 
@@ -142,9 +155,6 @@ public class AutomationPracticeFormPage {
         return this;
     }
 
-    public ResultTableComponent resultTable() {
-        return resultTableComponent;
-    }
 
     public AutomationPracticeFormPage checkFirstNameErrorBorder() {
         firstNameInput.shouldHave(cssValue(borderColor, red));
